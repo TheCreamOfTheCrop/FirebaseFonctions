@@ -19,7 +19,7 @@ exports.validPayment = functions.https.onRequest((req, res) => {
         payer: payer,
     };
 
-    return admin.database().ref('/payments').child(identifier).push(payment).then((snapshot) => {
+    return admin.database().ref('/payments/${identifier}').push(payment).then((snapshot) => {
     return res.redirect(303, snapshot.ref.toString());
     });
 
@@ -38,7 +38,7 @@ exports.unValidPayment = functions.https.onRequest((req, res) => {
         payer: payer,
     };
 
-    return admin.database().ref('/payments').child(identifier).push(payment).then((snapshot) => {
+    return admin.database().ref('/payments/${identifier}').push(payment).then((snapshot) => {
         return res.redirect(303, snapshot.ref.toString());
     });
 
