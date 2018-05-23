@@ -23,5 +23,5 @@ exports.unValidPayment = functions.https.onRequest((req, res) => {
     return admin.database().ref('/payments').child(identifier).set({valid: false}).then((snapshot) => {
         return res.redirect(303, snapshot.ref.toString());
     });
-    
+
 });
